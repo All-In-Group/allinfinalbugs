@@ -19,6 +19,7 @@ $(document).ready(function () {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
+        infinite: false,
     });
 
     $(".slick-slider-works").slick({
@@ -162,3 +163,131 @@ $(document).ready(function () {
         }
     });
 });
+
+// data from json
+
+fetch("https://api.allin.am/data/allin-arm")
+    .then((response) => response.json())
+    .then((data) => {
+        // menu
+        var menu = document.getElementsByClassName("navbar-nav")[0];
+        var menuLi = menu.getElementsByTagName("li");
+
+        var menuValue = [];
+        Object.keys(data.menu).forEach((key) => {
+            menuValue.push(data.menu[key]);
+        });
+        var varmenuLi = 0;
+        menuLi.forEach((el) => {
+            el.getElementsByTagName("a")[0].innerHTML = menuValue[varmenuLi];
+            varmenuLi++;
+        });
+
+        // slides
+        var slide = document.getElementsByClassName("slick-content");
+        var slideValue = [];
+        Object.keys(data.slides).forEach((key) => {
+            slideValue.push(data.slides[key]);
+        });
+
+        var varSlide = 0;
+        slide.forEach((el) => {
+            el.getElementsByTagName("h1")[0].innerHTML = slideValue[varSlide].text;
+            el.getElementsByTagName("button")[0].innerHTML = `<a  href=${slideValue[varSlide].buttonUrl}></a>`;
+            el.getElementsByTagName("a")[0].innerHTML = slideValue[varSlide].button;
+            varSlide++;
+        });
+
+        var slideImg = document.getElementsByClassName("sl-img");
+
+        var varSlideImg = 0;
+        slideImg.forEach((el) => {
+            el.getElementsByTagName("img")[0].src = slideValue[varSlideImg].image;
+            varSlideImg++;
+        });
+
+        // mini services
+        var miniServices = document.getElementsByClassName("caption");
+        var miniServicesValue = [];
+        Object.keys(data["mini-services"]).forEach((key) => {
+            miniServicesValue.push(data["mini-services"][key]);
+        });
+
+        var varminiServices = 0;
+        miniServices.forEach((el) => {
+            el.getElementsByTagName("h2")[0].innerHTML = miniServicesValue[varminiServices].text;
+            el.getElementsByTagName("p")[0].innerHTML = miniServicesValue[varminiServices].description;
+            el.getElementsByTagName("button")[0].innerHTML = `<a  href=${slideValue[varminiServices].buttonUrl}></a>`;
+            el.getElementsByTagName("a")[0].innerHTML = slideValue[varminiServices].button;
+            varminiServices++;
+        });
+
+        var miniServicesImg = document.getElementsByClassName("thm-img");
+
+        var varminiServicesImg = 0;
+        miniServicesImg.forEach((el) => {
+            el.getElementsByTagName("img")[0].src = miniServicesValue[varminiServicesImg].image;
+            varminiServicesImg++;
+        });
+
+        // about us
+        var aboutUs2 = document.getElementsByClassName("item2")[0];
+        var aboutUsValue = [];
+        Object.keys(data["about-us"]).forEach((key) => {
+            aboutUsValue.push(data["about-us"][key]);
+        });
+
+        aboutUs2.getElementsByTagName("h1")[0].innerHTML = aboutUsValue[0];
+        aboutUs2.getElementsByTagName("h4")[0].innerHTML = aboutUsValue[3];
+
+        var aboutUs3 = document.getElementsByClassName("item3")[0];
+
+        aboutUs3.getElementsByTagName("p")[0].innerHTML = aboutUsValue[4];
+
+        var aboutUs3DivImg = document.getElementsByClassName("col-md-1");
+        var varaboutUs3DivImg = 0;
+        aboutUs3DivImg.forEach((el) => {
+            el.innerHTML = aboutUsValue[5][varaboutUs3DivImg].image;
+            varaboutUs3DivImg++;
+        });
+
+        var aboutUs3DivText = document.getElementsByClassName("col-md-11");
+        var varAboutUs3DivText = 0;
+        aboutUs3DivText.forEach((el) => {
+            el.getElementsByTagName("p")[0].innerHTML = aboutUsValue[5][varAboutUs3DivText].text;
+            varAboutUs3DivText++;
+        });
+
+        aboutUs3DivText[2].getElementsByTagName("button")[0].innerHTML = `<a  href=${aboutUsValue[2]}></a>`;
+        aboutUs3DivText[2].getElementsByTagName("button")[0].innerHTML = aboutUsValue[1];
+
+        //services
+        var services = document.getElementById("tabs");
+        var servicesLi = services.getElementsByTagName("li");
+        var servicesValue = [];
+        Object.keys(data["services"]).forEach((key) => {
+            servicesValue.push(data["services"][key]);
+        });
+
+        var varServices = 0;
+        servicesLi.forEach((el) => {
+            el.getElementsByTagName("img")[0].src = servicesValue[varServices].image;
+            el.getElementsByTagName("h3")[0].innerHTML = servicesValue[varServices].title;
+            varServices++;
+        });
+
+        var servicesContent = document.getElementsByClassName("tabs_content");
+        var varServicesContent = 0;
+        servicesContent.forEach((el) => {
+            el.getElementsByTagName("h4")[0].innerHTML = servicesValue[varServicesContent].contentTitle;
+            el.getElementsByTagName("div")[0].innerHTML = servicesValue[varServicesContent].content;
+            varServicesContent++;
+        });
+
+        var servicesImg = document.getElementsByClassName("tabs-content-img");
+        var varServicesImg = 0;
+        servicesImg.forEach((el) => {
+            el.getElementsByTagName("img")[0].src = servicesValue[varServicesImg].contentImage;
+            varServicesImg++;
+        });
+    });

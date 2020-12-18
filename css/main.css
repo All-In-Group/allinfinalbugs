@@ -75,6 +75,15 @@ li {
     color: #fff;
 }
 
+.btn-white > a {
+    text-decoration: none;
+    color: #179879;
+}
+
+.btn-white > a:hover {
+    color: #fff;
+}
+
 .btn-green {
     display: block;
     padding: 6px 10px;
@@ -89,6 +98,10 @@ li {
 
 .btn-green:hover {
     background-color: #075f4b;
+    color: #fff;
+}
+.btn-green > a {
+    text-decoration: none;
     color: #fff;
 }
 
@@ -493,7 +506,6 @@ ion-icon.ion-st.md.hydrated:hover {
 
 #services {
     padding-top: 50px;
-    height: 960px;
 }
 
 #tabs {
@@ -557,6 +569,11 @@ a.tab-articl {
 
 .tabs-content-img img {
     width: 100%;
+}
+
+.services-content {
+    font-family: "Cairo", sans-serif;
+    font-size: calc(14px + 2 * ((100vw - 320px) / (1280 - 320)));
 }
 
 /*content*/
@@ -1724,9 +1741,6 @@ footer {
 
     /*services*/
 
-    #services {
-        height: fit-content;
-    }
     .tab-img img {
         width: 120px;
         padding: 30px;
