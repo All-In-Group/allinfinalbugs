@@ -39,7 +39,7 @@
 <!--header-->
 <header id="home">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+        <div class="container navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#home">
                     <img src="./img/logo/all-in-group-logo.png" alt="">
@@ -50,11 +50,11 @@
                         aria-expanded="false" aria-controls="navbar">
                     <ion-icon name="menu-outline"></ion-icon>
                 </button>
-
-                
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+            
+              <div id="navbar" class="navbar-collapse collapse ">
+                <div class="navbar-m-menu">
+                  <ul class="nav navbar-nav">
                     <li><a href="#about">Մեր մասին</a></li>
                     <li><a href="#team">Մեր թիմը</a></li>
                     <li><a href="#services">Ծառայություններ</a></li>
@@ -62,7 +62,27 @@
                     <li><a href="#blog-container">Բլոգ</a></li>
                     <li><a href="#contact">Հետադարձ կապ</a></li>
                 </ul>
-            </div>
+                <div class="options-languages">
+                  <div class="languages-title">
+                    <img src="./img/languages/am.png" alt="Հայերեն">
+                  </div>
+                  <ul class="sub_lang">
+                    <li onclick="chnageLanguages('arm')"><img src="./img/languages/am.png" alt="Հայերեն"> Հայերեն </li>
+                    <li onclick="chnageLanguages('rus')"><img src="./img/languages/ru.png" alt="English"> Русский </li>
+                    <li onclick="chnageLanguages('eng')"><img src="./img/languages/us.png" alt="Русский"> English </li>
+                    </ul>
+                </div>
+                <div class="options-languages-mobile">
+                  <ul class="sub_lang-mobile">
+                    <li onclick="chnageLanguages('arm')"><img src="./img/languages/am.png" alt="Հայերեն"> </li>
+                    <li onclick="chnageLanguages('rus')"><img src="./img/languages/ru.png" alt="English"> </li>
+                    <li onclick="chnageLanguages('eng')"><img src="./img/languages/us.png" alt="Русский">  </li>
+                    </ul>
+                </div>
+                </div>
+                
+              </div>
+            
         </div>
     </nav>
     <main class="slider">
